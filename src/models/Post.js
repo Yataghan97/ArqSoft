@@ -1,12 +1,11 @@
-import mongoose from "mongoose";
+import express from "express";
+import PostController from "../controllers/postcontroller.js";
 
-const postSchema = new mongoose.Schema({
-    id: {type: mongoose.Schema.Types.ObjectId},
-    title: {type: String, require: true},
-    description: {type: String},
-    author: {type: String, require: true},
-}, {versionKey: false});
+const routes = express.Router();
 
-const post = mongoose.model("posts", postSchema);
+routes.get("/posts", PostController.getAllPosts);
+routes.get("/posts", PostController.postPost);
+routes.get("/posts", PostController.getPost);
 
-export default post;
+
+export default routes;
