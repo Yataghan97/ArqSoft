@@ -1,12 +1,12 @@
 import express from "express";
-import posts from "./postsRoutes.js";
+import games from "./gameRoutes.js";
 
 const routes = (app) => {
 
 
     app.route("/").get((req, res) => res.status(200).send("API teste"))
 
-    app.use(express.json(), posts)
+    app.use(express.json(), games,)
 
 };
 
