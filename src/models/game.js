@@ -28,6 +28,12 @@ const gameSchema = new mongoose.Schema({
 
     v: {type: Boolean,
         default: false
+
+    //v: {type: Number,
+    //    validate: {
+    //        validator: Number.isInteger
+    //}
+
     },
 
 }, 
