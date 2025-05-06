@@ -28,7 +28,13 @@ const gameSchema = new mongoose.Schema({
 
     v: {type: Boolean,
         default: false
+    },
 
+    favoritos: {
+        type: [String],
+        default: []
+    }
+    
     //v: {type: Number,
     //    validate: {
     //        validator: Number.isInteger
@@ -36,13 +42,12 @@ const gameSchema = new mongoose.Schema({
 
     },
 
-}, 
 
 {
     versionKey: false, 
     timestamps: true, 
 });
 
-const game = mongoose.model("jogos", gameSchema);
+const game = mongoose.model("apis", gameSchema);
 
 export default game;

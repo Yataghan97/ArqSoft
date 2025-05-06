@@ -1,5 +1,6 @@
 import express from "express";
 import GameController from "../controllers/gameController.js";
+import apiController from "../controllers/apiController.js";
 
 const routes = express.Router();
 
@@ -10,6 +11,6 @@ routes.get("/game/:id", GameController.getGame);
 routes.post("/game", GameController.postGame);
 routes.delete("/game/:id", GameController.gameDelete);
 routes.put("/game/:id", GameController.updateGame);
-
+routes.get("/addjogo", apiController.salvarApi);
 
 export default routes;
