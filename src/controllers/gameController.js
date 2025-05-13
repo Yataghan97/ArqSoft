@@ -16,7 +16,7 @@ class gameController {
             const newGame = new game(req.body);
             await newGame.save();
             res.status(201).json({
-                message: "Autor criado com sucesso!",
+                message: "Jogo adicionado com sucesso!",
                 post: newGame,
             })
         }catch (error){

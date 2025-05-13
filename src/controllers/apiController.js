@@ -21,12 +21,12 @@ class apiController {
       const response = await axios.get("https://api.rawg.io/api/games", {
         params: {
           key: process.env.RAWG_API_KEY,
-          page_size: 5,  // Buscar 5 jogos por vez
+          page_size: 5,  // quantia de jogos por pesquisa
           search: jogoNome,
         },
       });
 
-      const jogos = response.data.results;  // Pega todos os jogos retornados pela API
+      const jogos = response.data.results; 
 
       if (jogos.length === 0) {
         return res.status(404).send("Nenhum jogo encontrado.");
@@ -67,18 +67,10 @@ class apiController {
 
     } catch (error) {
       console.error("Erro ao buscar ou salvar os jogos:", error);
-      res.status(500).send("Erro ao processar sua solicitação.");
+      res.status(500).send("teste.");
     }
   };
 
-  static async getAlljogos(req, res) {
-    try {
-      const listApi = await api.find({});
-      res.status(200).json(listApi);  
-    } catch (error) {
-      res.status(500).send(error.message);
-    }
-  };
 }
 
 export default apiController;
