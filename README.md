@@ -1,41 +1,72 @@
-# API de Jogos (Game API)
+# 🎮 API de Jogos com Front-end
 
-Esta API oferece funcionalidades para gerenciar **jogos**. A API permite realizar operações CRUD (Criar, Ler, Atualizar, Deletar) para jogos e também permite a pesquisa de jogos com base em palavras-chave.
+Este projeto fornece uma API completa para o gerenciamento de jogos, com funcionalidades CRUD (Criar, Ler, Atualizar, Deletar) e pesquisa por palavras-chave. A API é complementada por um front-end interativo para facilitar o uso.
 
-## Tecnologias Utilizadas
+---
 
+## 🚀 Tecnologias Utilizadas
+
+### Backend
 - **Node.js**
 - **Express.js**
 - **MongoDB**
+- **Mongoose**
+- **Dotenv**
 
-## Instrucoes de instalacao
+### Frontend
+- **HTML/CSS/JS**
+- **Fetch API**
 
-Para rodar esta aplicação, é necessário realizar a instalação do Node.js. Você pode obter o instalador no site oficial.
+---
 
-O Express é instalado via o comando:
+## ✅ Pré-requisitos
 
-bash
+- [Node.js](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
 
-npm install express
-E o MongoDB é instalado via:
+---
 
-bash
+## ⚙️ Instalação
 
-npm install mongoose dotenv
-Por último, altere as informações no arquivo .env para as configurações do banco de dados solicitado.
+Clone o repositório e instale as dependências:
+
+```bash
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
+npm install
+```
+
+---
+
+## ⚙️ Configuração do Ambiente
+
+Crie um arquivo `.env` na raiz do projeto e adicione:
+
+```env
+MONGODB_URI=mongodb://localhost:27017/nomeDoBanco
+PORT=3000
+```
+
+---
+
+## ▶️ Executando a Aplicação
+
+```bash
+npm start
+```
+
+- A API estará disponível em: `http://localhost:5078`
 
 
+---
 
-## Endpoints
+## 📚 Endpoints da API
 
-A seguir estão os endpoints que a API oferece:
+### 🔹 GET `/game`
+**Descrição**: Lista todos os jogos.
 
-### 1. **GET** `/game`
+**Exemplo de Resposta**:
 
-**Descrição**: Retorna todos os jogos cadastrados.
-
-**Exemplo de resposta**:
-```json
 [
   {
         "v": false,
@@ -59,14 +90,12 @@ A seguir estão os endpoints que a API oferece:
 
   }
 ]
-```
 
-### 2. **POST** `/game`
-
+### 🔹 POST `/game`
 **Descrição**: Cria um novo jogo.
 
-**Exemplo de corpo da requisição**:
-```json
+**Exemplo de corpo da requisição:**
+
 {
         "v": true,
         "_id": "67eb1a676462e47dff350fd0",
@@ -76,10 +105,8 @@ A seguir estão os endpoints que a API oferece:
         "plataformas": "PC",
         "dataCriacao": "2025-03-25T00:40:27.709Z",
 }
-```
+**Exemplo de resposta:**
 
-**Exemplo de resposta**:
-```json
 {
   "message": "Jogo criado com sucesso!",
   "game": {
@@ -92,19 +119,15 @@ A seguir estão os endpoints que a API oferece:
         "dataCriacao": "2025-03-25T00:40:27.709Z",
   }
 }
-```
 
-### 3. **GET** `/game/search/:keyword`
-
+### 🔹 GET `/game/search/:keyword`
 **Descrição**: Pesquisa jogos utilizando uma palavra-chave.
 
-**Exemplo de requisição**:
-```
+**Exemplo de requisição:**
 GET /game/search/Jogo
-```
 
-**Exemplo de resposta**:
-```json
+**Exemplo de resposta:**
+
 [
   {
         "v": true,
@@ -116,19 +139,14 @@ GET /game/search/Jogo
         "dataCriacao": "2025-03-25T00:40:27.709Z",
   }
 ]
-```
-
-### 4. **GET** `/game/:id`
-
+### 🔹 GET `/game/:id`
 **Descrição**: Retorna um jogo pelo seu ID.
 
-**Exemplo de requisição**:
-```
+**Exemplo de requisição:**
 GET /game/60a5f98f3b3f7d5b9c75bc5e
-```
 
-**Exemplo de resposta**:
-```json
+**Exemplo de resposta:**
+
 {
         "v": true,
         "_id": "67eb1a676462e47dff350fd0",
@@ -138,22 +156,19 @@ GET /game/60a5f98f3b3f7d5b9c75bc5e
         "plataformas": "PC",
         "dataCriacao": "2025-03-25T00:40:27.709Z",
 }
-```
 
-### 5. **PUT** `/game/:id`
+### 🔹 PUT `/game/:id`
+**Descrição**: Atualiza um jogo existente.
 
-**Descrição**: Atualiza as informações de um jogo.
+**Exemplo de corpo da requisição:**
 
-**Exemplo de corpo da requisição**:
-```json
 {
   "name": "Jogo Teste Atualizado",
   "description": "Nova descrição do Jogo Teste"
 }
-```
 
-**Exemplo de resposta**:
-```json
+**Exemplo de resposta:**
+
 {
   "message": "Jogo atualizado com sucesso!",
   "game": {
@@ -166,21 +181,78 @@ GET /game/60a5f98f3b3f7d5b9c75bc5e
         "dataCriacao": "2025-03-25T00:40:27.709Z",
   }
 }
-```
 
-### 6. **DELETE** `/game/:id`
-
+### 🔹 DELETE `/game/:id`
 **Descrição**: Deleta um jogo pelo seu ID.
 
-**Exemplo de resposta**:
-```json
+**Exemplo de resposta:**
+
 {
   "message": "Jogo removido com sucesso!"
 }
 
+---
 
-
-npm install --save-dev @vitejs/plugin-react
+## 📁 Estrutura do Projeto
 
 ```
-chmod +x node_modules/.bin/vite
+projeto/
+├── dump/
+│   ├── test/
+├── node_modules/
+├── src/
+│   └── config/
+        └── dbConnect.js
+        └── json.js
+    └── controllers/
+        └── apiController.js
+        └── authController.js
+        └── gameController.js
+        └── userController.js
+    └── middleware/
+        └── middleware.js
+    └── models/
+        └── api.js
+        └── game.js
+        └── user.js
+    └── repositories/
+        └── apiRepository.js
+        └── authRepository.js
+        └── gameRepository.js
+        └── userRepository.js
+    └── routers/
+        └── authRoutes.js
+        └── gameRoutes.js
+        └── index.js
+        └── userRoutes.js
+    └── services/
+        └── apiService.js
+        └── authService.js
+        └── gameService.js
+        └── userService.js
+    └── app.js
+├── viewer/
+    └── src/
+        └── index.html
+        └── package-lock 2.json
+        └── package-lock.json
+        └── package.json
+        └── postcss.config.js
+        └── tailwind.config.js
+        └── vite.config.js
+├── .env
+├── server.js
+└── README.md
+```
+
+---
+
+## 🧪 Front-End
+
+A interface web permite consultar os jogos cadastrados diretamente pela URL ou formulário de busca. Ideal para testes rápidos ou interação visual com a base.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT.
