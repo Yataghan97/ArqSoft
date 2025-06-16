@@ -31,7 +31,7 @@ Este projeto fornece uma API completa para o gerenciamento de jogos, com funcion
 Clone o repositório e instale as dependências:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repo.git
+git clone https://github.com/Yataghan97/ArqSoft.git
 cd seu-repo
 npm install
 ```
@@ -44,7 +44,7 @@ Crie um arquivo `.env` na raiz do projeto e adicione:
 
 ```env
 MONGODB_URI=mongodb://localhost:27017/nomeDoBanco
-PORT=3000
+PORT=3004
 ```
 
 ---
@@ -52,7 +52,7 @@ PORT=3000
 ## ▶️ Executando a Aplicação
 
 ```bash
-npm start
+npm run dev
 ```
 
 - A API estará disponível em: `http://localhost:5078`
