@@ -1,180 +1,140 @@
-# API de Jogos (Game API)
+# 🧾 ContentManager API - Plataforma de Gerenciamento de Publicações
 
-Esta API oferece funcionalidades para gerenciar **jogos**. A API permite realizar operações CRUD (Criar, Ler, Atualizar, Deletar) para jogos e também permite a pesquisa de jogos com base em palavras-chave.
+Uma API RESTful robusta construída com Node.js, focada na gestão de conteúdo, autenticação segura e arquitetura modular.
 
-## Tecnologias Utilizadas
+## ✨ Recursos Principais
 
-- **Node.js**
-- **Express.js**
-- **MongoDB**
+- 🔐 **Login com JWT** - Autenticação protegida por token
+- 👤 **Gestão de Usuários** - Operações CRUD com verificação
+- ✒️ **Administração de Autores** - Controle completo de criadores de conteúdo
+- 📰 **Publicações** - CRUD de posts com busca inteligente
+- 🔍 **Pesquisa Avançada** - Filtragem por palavras-chave
+- 🏗️ **Design em Camadas** - Separação clara de responsabilidades
+- 📑 **Swagger** - Interface interativa para explorar a API
+- 🔒 **Criptografia de Senhas** - Segurança com bcrypt
+- 🧾 **Validação de Entrada** - Estrutura robusta via Mongoose
 
-## Instrucoes de instalacao
+## ⚙️ Tecnologias Empregadas
 
-Para rodar esta aplicação, é necessário realizar a instalação do Node.js. Você pode obter o instalador no site oficial.
+| Ferramenta | Versão | Função |
+|------------|--------|--------|
+| Node.js | 18+ | Ambiente de execução JavaScript |
+| Express | ^4.21.2 | Framework para APIs |
+| MongoDB | ^6.14.2 | Banco de dados orientado a documentos |
+| Mongoose | ^6.0.0 | Mapeamento ODM |
+| JWT | ^9.0.2 | Token de autenticação |
+| Bcrypt | ^3.0.2 | Proteção de senhas |
+| Swagger | ^6.2.8 | Documentação da API |
+| Nodemon | ^3.1.9 | Monitoramento de mudanças no código |
 
-O Express é instalado via o comando:
+## 📦 Pré-requisitos
 
-bash
+- Node.js 18+
+- MongoDB local ou remoto (Atlas)
+- Git
+- npm ou yarn
 
-npm install express
-E o MongoDB é instalado via:
+## 🚧 Instalação
 
-bash
-
-npm install mongoose dotenv
-Por último, altere as informações no arquivo .env para as configurações do banco de dados solicitado.
-
-
-
-## Endpoints
-
-A seguir estão os endpoints que a API oferece:
-
-### 1. **GET** `/game`
-
-**Descrição**: Retorna todos os jogos cadastrados.
-
-**Exemplo de resposta**:
-```json
-[
-  {
-        "v": false,
-        "_id": "67e1fb7b137d2ce419a9140d",
-        "nome": "Valorant 2.0",
-        "nota": null,
-        "genero": "Gênero não disponível",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-
-  },
-
-  {
-        "v": true,
-        "_id": "67eb1a676462e47dff350fd0",
-        "nome": "Valorant",
-        "nota": null,
-        "genero": "Action, Shooter, Strategy",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-
-  }
-]
+```bash
+git clone https://github.com/seu-usuario/contentmanager-api.git
+cd contentmanager-api
+npm install
 ```
 
-### 2. **POST** `/game`
+Crie um arquivo `.env` com as configurações:
 
-**Descrição**: Cria um novo jogo.
-
-**Exemplo de corpo da requisição**:
-```json
-{
-        "v": true,
-        "_id": "67eb1a676462e47dff350fd0",
-        "nome": "Valorant",
-        "nota": null,
-        "genero": "Action, Shooter, Strategy",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-}
+```env
+DB_CONNECTION_STRING=mongodb://localhost:27017/cmdb
+JWT_SECRET=sua_chave_segura
+NODE_ENV=development
+PORT=3000
 ```
 
-**Exemplo de resposta**:
-```json
-{
-  "message": "Jogo criado com sucesso!",
-  "game": {
-        "v": true,
-        "_id": "67eb1a676462e47dff350fd0",
-        "nome": "Valorant",
-        "nota": null,
-        "genero": "Action, Shooter, Strategy",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-  }
-}
+Inicie a aplicação:
+
+```bash
+# Ambiente de desenvolvimento
+npm run dev
+
+# Modo produção
+npm start
 ```
 
-### 3. **GET** `/game/search/:keyword`
+## 📚 Documentação Interativa
 
-**Descrição**: Pesquisa jogos utilizando uma palavra-chave.
+Acesse após iniciar o servidor:
 
-**Exemplo de requisição**:
 ```
-GET /game/search/Jogo
-```
-
-**Exemplo de resposta**:
-```json
-[
-  {
-        "v": true,
-        "_id": "67eb1a676462e47dff350fd0",
-        "nome": "Valorant",
-        "nota": null,
-        "genero": "Action, Shooter, Strategy",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-  }
-]
+http://localhost:3000/api-docs
 ```
 
-### 4. **GET** `/game/:id`
+## 🔗 Principais Rotas
 
-**Descrição**: Retorna um jogo pelo seu ID.
+- `POST /auth/login` - Login com email/senha
+- `GET /users` - Listar usuários
+- `POST /authors` - Criar autor (requer login)
+- `POST /posts` - Publicar conteúdo (requer login)
+- `GET /posts/search/:keyword` - Busca por palavras-chave
 
-**Exemplo de requisição**:
+## 🧱 Organização dos Arquivos
+
 ```
-GET /game/60a5f98f3b3f7d5b9c75bc5e
-```
-
-**Exemplo de resposta**:
-```json
-{
-        "v": true,
-        "_id": "67eb1a676462e47dff350fd0",
-        "nome": "Valorant",
-        "nota": null,
-        "genero": "Action, Shooter, Strategy",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-}
-```
-
-### 5. **PUT** `/game/:id`
-
-**Descrição**: Atualiza as informações de um jogo.
-
-**Exemplo de corpo da requisição**:
-```json
-{
-  "name": "Jogo Teste Atualizado",
-  "description": "Nova descrição do Jogo Teste"
-}
+project-root/
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── dtos/
+│   ├── middleware/
+│   ├── models/
+│   ├── repositories/
+│   ├── routes/
+│   ├── services/
+│   └── app.js
+├── .env
+├── package.json
+└── server.js
 ```
 
-**Exemplo de resposta**:
-```json
-{
-  "message": "Jogo atualizado com sucesso!",
-  "game": {
-    "v": true,
-        "_id": "67eb1a676462e47dff350fd0",
-        "nome": "Valorant",
-        "nota": null,
-        "genero": "Action, Shooter, Strategy",
-        "plataformas": "PC",
-        "dataCriacao": "2025-03-25T00:40:27.709Z",
-  }
-}
+## 🧪 Testes
+
+- Swagger UI: `/api-docs`
+- Postman: importe a collection
+- curl: veja exemplos abaixo
+
+```bash
+curl -X POST http://localhost:3000/users -H "Content-Type: application/json" -d '{"name": "Ana", "email": "ana@email.com", "password": "123456"}'
 ```
 
-### 6. **DELETE** `/game/:id`
+## 🚀 Deploy
 
-**Descrição**: Deleta um jogo pelo seu ID.
+### Heroku
 
-**Exemplo de resposta**:
-```json
-{
-  "message": "Jogo removido com sucesso!"
-}
+```bash
+heroku login
+heroku create contentmanager-api
+heroku config:set JWT_SECRET=xxx DB_CONNECTION_STRING=xxx
+git push heroku main
 ```
+
+## 🤝 Como Contribuir
+
+1. Fork este repositório
+2. Crie uma branch: `git checkout -b feature/sua-feature`
+3. Commit suas mudanças: `git commit -m 'feat: nova feature'`
+4. Push: `git push origin feature/sua-feature`
+5. Envie um Pull Request
+
+## 🛡️ Segurança
+
+- Hash de senhas com bcrypt
+- Tokens expiram em 24h
+- CORS habilitado para desenvolvimento
+
+## 📌 Licença
+
+Distribuído sob a licença MIT.
+
+---
+
+⭐ Se curtir, deixe uma estrela!
