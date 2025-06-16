@@ -67,6 +67,7 @@ npm start
 
 **Exemplo de Resposta**:
 
+```json
 [
   {
         "v": false,
@@ -90,12 +91,14 @@ npm start
 
   }
 ]
+```
 
 ### 🔹 POST `/game`
 **Descrição**: Cria um novo jogo.
 
 **Exemplo de corpo da requisição:**
 
+```json
 {
         "v": true,
         "_id": "67eb1a676462e47dff350fd0",
@@ -105,8 +108,9 @@ npm start
         "plataformas": "PC",
         "dataCriacao": "2025-03-25T00:40:27.709Z",
 }
+```
 **Exemplo de resposta:**
-
+```json
 {
   "message": "Jogo criado com sucesso!",
   "game": {
@@ -119,15 +123,19 @@ npm start
         "dataCriacao": "2025-03-25T00:40:27.709Z",
   }
 }
+```
 
 ### 🔹 GET `/game/search/:keyword`
 **Descrição**: Pesquisa jogos utilizando uma palavra-chave.
 
 **Exemplo de requisição:**
+```
 GET /game/search/Jogo
+```
 
 **Exemplo de resposta:**
 
+```json
 [
   {
         "v": true,
@@ -139,14 +147,19 @@ GET /game/search/Jogo
         "dataCriacao": "2025-03-25T00:40:27.709Z",
   }
 ]
+```
+
 ### 🔹 GET `/game/:id`
 **Descrição**: Retorna um jogo pelo seu ID.
 
 **Exemplo de requisição:**
+```
 GET /game/60a5f98f3b3f7d5b9c75bc5e
+```
 
 **Exemplo de resposta:**
 
+```json
 {
         "v": true,
         "_id": "67eb1a676462e47dff350fd0",
@@ -156,19 +169,23 @@ GET /game/60a5f98f3b3f7d5b9c75bc5e
         "plataformas": "PC",
         "dataCriacao": "2025-03-25T00:40:27.709Z",
 }
+```
 
 ### 🔹 PUT `/game/:id`
 **Descrição**: Atualiza um jogo existente.
 
 **Exemplo de corpo da requisição:**
 
+```json
 {
   "name": "Jogo Teste Atualizado",
   "description": "Nova descrição do Jogo Teste"
 }
+```
 
 **Exemplo de resposta:**
 
+```json
 {
   "message": "Jogo atualizado com sucesso!",
   "game": {
@@ -181,15 +198,17 @@ GET /game/60a5f98f3b3f7d5b9c75bc5e
         "dataCriacao": "2025-03-25T00:40:27.709Z",
   }
 }
+```
 
 ### 🔹 DELETE `/game/:id`
 **Descrição**: Deleta um jogo pelo seu ID.
 
 **Exemplo de resposta:**
-
+```json
 {
   "message": "Jogo removido com sucesso!"
 }
+```
 
 ---
 
